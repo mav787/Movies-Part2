@@ -1,0 +1,9 @@
+[Command: ruby /Users/sunhaotian/Dropbox/cosi166b_htsun1993/movies-2/control.rb]
+There are 6529 exact predicts.
+There are 9019 predicts off by 1.
+There are 2982 predicts off by 2.
+There are 1399 predicts off by 3.
+There are 71 predicts off by 4.
+The mean is 0.9732.
+And the stdev is 0.8868944469326776.
+[Finished in 174.545s]
