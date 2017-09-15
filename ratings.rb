@@ -24,7 +24,7 @@ class Ratings
       end
       # puts data
       @buddy_dict = {}    # {user_id: buddy_id}
-      @user_dict.each do |key, value|
+      @user_dict.each do |key, _value|
         @buddy_dict[key] = most_similar(key, 1)[0]
       end
   end
@@ -102,7 +102,7 @@ class Ratings
       end
       total = 0.0
 
-      @movie_dict[movie_id].each do |user_id, rating|
+      @movie_dict[movie_id].each do |_user_id, rating|
         total += rating
       end
       return (total / @movie_dict[movie_id].length).to_i
@@ -114,8 +114,8 @@ class Ratings
     @movie_dict.each_key do |movie_id|
       map[movie_id] = popularity(movie_id)
     end
-    sorted = map.sort_by{|key, value| value}.reverse
-    sorted.each do |key, value|
+    sorted = map.sort_by{|_key, value| value}.reverse
+    sorted.each do |key, _value|
       res.push(key)
     end
     return res
@@ -130,7 +130,7 @@ class Ratings
     (1..@movie_dict.length).each do |index|
       if(rating1.has_key?(index) && rating2.has_key?(index))
          inner_product += rating1[index] * rating2[index]
-       end
+      end
     end
 
     len1 = len2 = 0
@@ -153,7 +153,7 @@ class Ratings
     @user_dict.each_key do |user_id|
       similarities[user_id] = similarity(u, user_id)
     end
-    similarities.sort{|a,b| b[1]<=>a[1]}[1..len].each do |key, value| # exclude u itself
+    similarities.sort{|a,b| b[1]<=>a[1]}[1..len].each do |key, _value| # exclude u itself
        res.push(key)
     end
     return res
